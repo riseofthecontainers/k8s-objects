@@ -17,3 +17,6 @@ spec:
           image: thecasualcoder/dobby
           ports:
             - containerPort: 4444
+          env:
+            - name: VERSION
+              value: "3.0"              

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-node
+spec:
+  containers:
+    - name: hello-node-app
+      image: sunitparekh/hello-world-nodejs:v1.0.0-deba82b
+      ports:
+        - containerPort: 8080

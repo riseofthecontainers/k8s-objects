@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dobby-config
+data:
+  version: "10.10"
+  initial_delay: "5"

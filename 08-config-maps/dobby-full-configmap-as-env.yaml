@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dobby-cm
+spec:
+  containers:
+    - name: dobby
+      image: thecasualcoder/dobby
+      ports:
+        - containerPort: 4444
+      envFrom:
+        - configMapRef:
+            name: dobby-config

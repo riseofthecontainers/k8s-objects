@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: dobby-rs
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: dobby-pod
+  template:
+    metadata:
+      labels:
+        app: dobby-pod
+    spec:
+      containers:
+        - name: dobby
+          image: thecasualcoder/dobby
+          ports:
+            - containerPort: 4444
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 4444
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4444
+            initialDelaySeconds: 20
+            periodSeconds: 3

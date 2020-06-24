@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dobby
+  annotations:
+    kubernetes.io/change-cause: "My message"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dobby-pod
+  template:
+    metadata:
+      labels:
+        app: dobby-pod
+    spec:
+      containers:
+        - name: dobby
+          image: thecasualcoder/dobby
+          ports:
+            - containerPort: 4444
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 4444
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4444
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          env:
+            - name: VERSION
+              value: "6.0"  

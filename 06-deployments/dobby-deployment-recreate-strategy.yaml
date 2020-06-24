@@ -1,12 +1,14 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: dobby-rs
+  name: dobby
 spec:
-  replicas: 2
+  replicas: 6
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
-      app: dobby-pod
+      app: dobby-pod  
   template:
     metadata:
       labels:
@@ -29,3 +31,6 @@ spec:
               port: 4444
             initialDelaySeconds: 20
             periodSeconds: 3
+          env:
+            - name: VERSION
+              value: "11.0"  

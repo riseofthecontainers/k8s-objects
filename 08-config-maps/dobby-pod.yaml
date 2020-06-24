@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dobby
+spec:
+  containers:
+    - name: dobby
+      image: thecasualcoder/dobby
+      ports:
+        - containerPort: 4444
+      env:
+        - name: VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: dobby-config
+              key: version
+        - name: INITIAL_DELAY
+          valueFrom:
+            configMapKeyRef:
+              name: dobby-config
+              key: initial_delay

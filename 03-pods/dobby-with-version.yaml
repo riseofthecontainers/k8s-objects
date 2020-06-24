@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dobby
+spec:
+  containers:
+    - name: dobby
+      image: thecasualcoder/dobby
+      ports:
+        - containerPort: 4444
+      env:
+        - name: VERSION
+          value: "2.0"

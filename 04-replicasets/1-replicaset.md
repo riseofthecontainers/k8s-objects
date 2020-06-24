@@ -30,3 +30,12 @@ $ kubectl delete pod dobby-rs-????
 
 $ kubectl delete rs dobby-rs
 ```
+
+# showcase readiness and liveness probes
+```s
+$ kubectl apply -f dobby-rs-with-probes.yaml
+$ curl -i -X PUT http://10.10.10.2:4444/control/ready/sick
+$ curl -i -X PUT http://10.10.10.2:4444/control/health/sick
+$ curl -i -X PUT http://10.10.10.2:4444/control/ready/perfect
+
+```

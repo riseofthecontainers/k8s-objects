@@ -39,7 +39,7 @@ $ wget -qO- 172.17.0.4:4444/version
 
 # add ENV variable to POD and see the change
 $ kubectl apply -f dobby-with-version.yaml
-$ kubectl exec dobby -it -- bassh
+$ kubectl exec dobby -it -- bash
     $ echo $VERSION
 
 $ kubectl exec hello-node -it -- sh
@@ -47,7 +47,7 @@ $ wget -qO- 172.17.0.4:4444/version
 
 # get into the node to hit API endpoints
 $ minikube ssh 
-$ curl -i -X PUT 172.17.0.4:4444/control/crash
+$ curl -i -X PUT 10.244.2.3:4444/control/crash
 
 # notice STATUS and RESTART count in watch pane
 ```

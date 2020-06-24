@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dobby
+spec:
+  replicas: 6
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+        maxSurge: 10%
+        maxUnavailable: 10% 
+  selector:
+    matchLabels:
+      app: dobby-pod  
+  template:
+    metadata:
+      labels:
+        app: dobby-pod
+    spec:
+      containers:
+        - name: dobby
+          image: thecasualcoder/dobby
+          ports:
+            - containerPort: 4444
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 4444
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4444
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          env:
+            - name: VERSION
+              value: "10.0"  

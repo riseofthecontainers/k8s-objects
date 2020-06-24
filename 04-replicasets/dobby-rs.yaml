@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
-  name: dobby
+  name: dobby-rs
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: dobby-pod
@@ -17,6 +17,3 @@ spec:
           image: thecasualcoder/dobby
           ports:
             - containerPort: 4444
-          env:
-            - name: VERSION
-              value: "3.0"  

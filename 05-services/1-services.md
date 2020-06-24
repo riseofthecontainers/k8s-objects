@@ -10,6 +10,7 @@ $ watch kubectl get endpoints           #ffeb00
 ### ClusterIP
 
 ```s
+$ $ kubectl apply -f ../03-replicasets/dobby-rs.yaml
 $ kubectl apply -f dobby-svc.yaml
 $ kubectl describe svc dobbysvc
 $ kubectl describe endpoints dobbysvc
@@ -24,7 +25,7 @@ $ kubectl describe endpoints dobbysvc
 $ curl dobbysvc:4444/meta
 
 # access dobby in loop and observe request going to different pods
-$ while true; do sleep 2; curl "http://10.108.35.33:4444/meta"; echo -e '    '$(date);done
+$ while true; do sleep 2; curl "http://10.10.10.3:30003/meta"; echo -e '    '$(date);done
 
 
 # to access via DNS name, get inside containers

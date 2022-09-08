@@ -6,11 +6,13 @@ spec:
   schedule: "*/1 * * * *"
   jobTemplate:
     spec:
+      completions: 3
+      parallelism: 2
       template:
         spec:
           containers:
             - name: test-container
               image: k8s.gcr.io/busybox
-              command: ["/bin/sh", "-c", "echo 'I am doing my job'; ls -al; sleep 5"]
+              command: ["/bin/sh", "-c", "echo 'I am doing my job'; ls -al; sleep 2"]
           restartPolicy: OnFailure
       backoffLimit: 4

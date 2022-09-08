@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  version: "10"
+  test.properties: |-
+    VERSION=10.10
+    INITIAL_DELAY=50
+  my_script.sh: |-
+    #! /bin/sh
+    echo "I am there"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: test-config-from-file-2

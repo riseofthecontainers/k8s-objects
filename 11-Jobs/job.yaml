@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: test-container
-          image: k8s.gcr.io/busybox
+          image: curlimages/curl
           command: ["/bin/sh", "-c", "echo 'I am doing my job'; ls -al; sleep 5"]
       restartPolicy: OnFailure
   backoffLimit: 4

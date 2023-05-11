@@ -2,6 +2,7 @@
 
 # IDE
 .vscode
+.idea
 
 
 # Logs

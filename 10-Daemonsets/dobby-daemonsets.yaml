@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dobby-daemon-set
+spec:
+  selector:
+    matchLabels:
+      app: dobby-pod
+  template:
+    metadata:
+      labels:
+        app: dobby-pod
+    spec:
+      containers:
+        - name: dobby
+          image: thecasualcoder/dobby
+          ports:
+            - containerPort: 4444

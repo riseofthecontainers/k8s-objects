@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-job
+spec:
+  completions: 4
+  parallelism: 3
+  template:
+    spec:
+      containers:
+        - name: test-container
+          image: k8s.gcr.io/busybox
+          command: ["/bin/sh", "-c", "echo 'I am doing my job'; ls -al; sleep 5"]
+      restartPolicy: OnFailure
+  backoffLimit: 4

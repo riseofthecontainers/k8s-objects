@@ -22,7 +22,7 @@ $ kubectl describe configmap test-config-from-file
 # ticky bit is updating configmap files in k8s
 $ kubectl create configmap test-config-from-file --from-file test.properties -o yaml --dry-run=client | kubectl replace -f -
 
-$ kubectl apply -f test-configmap-as-volume.yaml
+$ kubectl apply -f test-pod-configmap-as-volume.yaml
 ```
 
 

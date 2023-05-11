@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: another-dobby
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: another-dobby-pod
+  template:
+    metadata:
+      labels:
+        app: another-dobby-pod
+    spec:
+      containers:
+        - name: dobby
+          image: thecasualcoder/dobby
+          ports:
+            - containerPort: 4444
+          env:
+            - name: VERSION
+              value: "5"
+            - name: INITIAL_DELAY
+              value: "10"
